@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library Rental System</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>Library Rental System</h1>
+    <nav>
+      <ul>
+        <li><a href="#" onclick="showPage('home')">Home</a></li>
+        <li><a href="#" onclick="showPage('books')">Books</a></li>
+        <li><a href="#" onclick="showPage('readers')">Readers</a></li>
+        <li><a href="#" onclick="showPage('return')">Return Book</a></li>
+        <li><a href="#" onclick="showPage('subscription')">Subscription</a></li>
+        <li><a href="#" onclick="showPage('register')">Register</a></li>
+        <li><a href="#" onclick="showPage('bookReport')">Book Report</a></li>
+        <li><a href="#" onclick="showPage('financialReport')">Financial Report</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div id="home" class="page active">
+      <h2>Welcome to the Library Rental System</h2>
+      <p>Use the navigation bar to manage books, readers, returns, and subscriptions.</p>
+    </div>
+
+    <div id="books" class="page">
+      <h2>Books</h2>
+      <ul id="bookList"></ul>
+    </div>
+
+    <div id="readers" class="page">
+      <h2>Readers</h2>
+      <ul id="readerList"></ul>
+    </div>
+
+    <div id="return" class="page">
+      <h2>Return Book</h2>
+      <form id="returnForm">
+        <label for="returnBookTitle">Book Title:</label>
+        <input type="text" id="returnBookTitle" name="returnBookTitle" required>
+        <label for="returnReaderName">Reader Name:</label>
+        <input type="text" id="returnReaderName" name="returnReaderName" required>
+        <label for="returnDate">Return Date:</label>
+        <input type="date" id="returnDate" name="returnDate" required>
+        <label for="damage">Damage:</label>
+        <select id="damage" name="damage">
+          <option value="none">Not damaged</option>
+          <option value="minor">Minor damage (+10%)</option>
+          <option value="major">Major damage (+75%)</option>
+        </select>
+        <button type="button" onclick="returnBook()">Return</button>
+      </form>
+      <div id="returnCost"></div>
+    </div>
+
+    <div id="subscription" class="page">
+      <h2>Purchase Subscription</h2>
+      <form id="subscriptionForm">
+        <label for="subscriptionReaderName">Reader Name:</label>
+        <input type="text" id="subscriptionReaderName" name="subscriptionReaderName" required>
+        <label for="subscriptionReaderId">Reader ID:</label>
+        <input type="text" id="subscriptionReaderId" name="subscriptionReaderId" required>
+        <label for="subscriptionType">Subscription Type:</label>
+        <select id="subscriptionType" name="subscriptionType">
+          <option value="monthly">Monthly ($10)</option>
+          <option value="yearly">Yearly ($100)</option>
+        </select>
+        <button type="button" onclick="purchaseSubscription()">Purchase</button>
+      </form>
+      <div id="subscriptionStatus"></div>
+    </div>
+
+    <div id="register" class="page">
+      <h2>Register</h2>
+      <form id="registerForm">
+        <label for="registerName">Name:</label>
+        <input type="text" id="registerName" name="registerName" required>
+        <label for="registerAddress">Address:</label>
+        <input type="text" id="registerAddress" name="registerAddress" required>
+        <label for="registerPhone">Phone:</label>
+        <input type="text" id="registerPhone" name="registerPhone" required>
+        <label for="registerCategory">Category:</label>
+        <select id="registerCategory" name="registerCategory">
+          <option value="regular">Regular</option>
+          <option value="minor">Minor (75% discount)</option>
+          <option value="military">Military (50% discount)</option>
+        </select>
+        <button type="button" onclick="registerReader()">Register</button>
+      </form>
+      <div id="registerStatus"></div>
+    </div>
+
+    <div id="addLoanForm" class="form-popup">
+      <h2>Borrow Book</h2>
+      <form id="loanForm">
+        <label for="loanReaderName">Reader Name:</label>
+        <input type="text" id="loanReaderName" name="loanReaderName" required>
+        <label for="loanReaderId">Reader ID:</label>
+        <input type="text" id="loanReaderId" name="loanReaderId" required>
+        <label for="bookTitle">Book Title:</label>
+        <input type="text" id="bookTitle" name="bookTitle" readonly>
+        <label for="issueDate">Issue Date:</label>
+        <input type="date" id="issueDate" name="issueDate" required>
+        <label for="returnDate">Return Date:</label>
+        <input type="date1" id="returnDate1" name="returnDate1" required>
+        <button type="button" onclick="addLoan()">Borrow</button>
+        <button type="button" onclick="closeForm('addLoanForm')">Cancel</button>
+      </form>
+    </div>
+
+    <div id="bookReport" class="page">
+      <h2>Book Report</h2>
+      <div id="bookReportContent"></div>
+    </div>
+
+    <div id="financialReport" class="page">
+      <h2>Financial Report</h2>
+      <div id="financialReportContent"></div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Library Rental System</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
